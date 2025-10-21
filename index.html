@@ -1,0 +1,915 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CHART IN BIO - Sistema de Links Descentralizado</title>
+<link rel="icon" type="image/x-icon" href="https://i.postimg.cc/kG5V5Qk4/Picsart-25-10-09-15-34-05-434.png">
+
+<!-- Bootstrap Icons CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+<!-- Meta Tags para Redes Sociais -->
+<meta property="og:title" content="Chart in Bio - Sistema de Links Descentralizado">
+<meta property="og:description" content="Crie seu perfil de links descentralizado na Binance Smart Chain. Totalmente on-chain e verificável.">
+<meta property="og:image" content="https://i.postimg.cc/9MHhNT5B/Picsart-25-10-09-15-34-07-593.jpg">
+<meta property="og:url" content="">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Chart In Bio">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Chart in Bio - Sistema de Links Descentralizado">
+<meta name="twitter:description" content="Crie seu perfil de links descentralizado na Binance Smart Chain">
+<meta name="twitter:image" content="https://i.postimg.cc/9MHhNT5B/Picsart-25-10-09-15-34-07-593.jpg">
+
+<style>
+  :root {
+    --bg-primary: #0B0E11;
+    --bg-secondary: #161A1E;
+    --bg-card: rgba(22, 26, 30, 0.9);
+    --bg-gradient: linear-gradient(135deg, #0B0E11 0%, #1A1D23 100%);
+    --accent-primary: #F0B90B;
+    --accent-secondary: #F8D33A;
+    --accent-gradient: linear-gradient(135deg, #F0B90B 0%, #F8D33A 100%);
+    --text-primary: #EAECEF;
+    --text-secondary: #B7BDC6;
+    --text-muted: #848E9C;
+    --border-light: rgba(240, 185, 11, 0.1);
+    --border-medium: rgba(240, 185, 11, 0.15);
+    --border-accent: rgba(240, 185, 11, 0.3);
+    --success: #0ECB81;
+    --danger: #F6465D;
+    --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.6);
+    --shadow-xl: 0 20px 40px -10px rgba(0, 0, 0, 0.7);
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    min-height: 100vh;
+    background: var(--bg-gradient);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* Header Styles */
+  .main-header {
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-light);
+    padding: 16px 32px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-section {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .logo-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--accent-primary);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 20px;
+    color: #0B0E11;
+  }
+
+  .logo-text {
+    font-size: 20px;
+    font-weight: 700;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 24px;
+  }
+
+  .nav-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+  }
+
+  .nav-link:hover {
+    color: var(--accent-primary);
+    background: rgba(240, 185, 11, 0.05);
+  }
+
+  .nav-link.active {
+    color: var(--accent-primary);
+    background: rgba(240, 185, 11, 0.1);
+  }
+
+  .cta-button {
+    background: var(--accent-gradient);
+    color: #0B0E11;
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(240, 185, 11, 0.3);
+  }
+
+  /* Hero Section */
+  .hero-section {
+    padding: 80px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.1;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto 40px;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .secondary-button {
+    background: transparent;
+    border: 1px solid var(--border-medium);
+    color: var(--text-secondary);
+    padding: 12px 24px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  .secondary-button:hover {
+    background: rgba(240, 185, 11, 0.1);
+    color: var(--accent-primary);
+    border-color: var(--accent-primary);
+  }
+
+  /* Features Section */
+  .features-section {
+    padding: 80px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 60px;
+    color: var(--text-primary);
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+  }
+
+  .feature-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 40px 30px;
+    text-align: center;
+    border: 1px solid var(--border-light);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+  }
+
+  .feature-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--border-accent);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .feature-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(240, 185, 11, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    color: var(--accent-primary);
+    font-size: 24px;
+  }
+
+  .feature-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+  }
+
+  .feature-description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* How It Works Section */
+  .how-it-works {
+    padding: 80px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .steps-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 50px;
+  }
+
+  .step {
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
+    position: relative;
+  }
+
+  .step-number {
+    width: 50px;
+    height: 50px;
+    background: var(--accent-gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: #0B0E11;
+    margin: 0 auto 20px;
+    font-size: 1.25rem;
+  }
+
+  .step-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+  }
+
+  .step-description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* Demo Section */
+  .demo-section {
+    padding: 80px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .demo-container {
+    background: var(--bg-card);
+    border-radius: var(--radius-xl);
+    padding: 40px;
+    border: 1px solid var(--border-light);
+    max-width: 480px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .demo-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--accent-gradient);
+  }
+
+  .demo-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: var(--text-primary);
+  }
+
+  .demo-profile {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .demo-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: var(--bg-primary);
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    border: 2px solid var(--border-light);
+  }
+
+  .demo-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .demo-description {
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+  }
+
+  .demo-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .demo-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background: rgba(240, 185, 11, 0.1);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: var(--text-primary);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+  }
+
+  .demo-link:hover {
+    background: rgba(240, 185, 11, 0.2);
+    border-color: var(--accent-primary);
+    transform: translateY(-2px);
+  }
+
+  /* CTA Section */
+  .cta-section {
+    padding: 80px 24px;
+    text-align: center;
+    background: var(--bg-card);
+    margin: 80px 0 0;
+  }
+
+  .cta-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+  }
+
+  .cta-subtitle {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto 40px;
+  }
+
+  /* Footer */
+  .footer {
+    background: var(--bg-primary);
+    padding: 60px 24px 30px;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+
+  .footer-column h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 12px;
+  }
+
+  .footer-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .footer-links a:hover {
+    color: var(--accent-primary);
+  }
+
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 30px;
+    border-top: 1px solid var(--border-light);
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 16px;
+    margin-top: 20px;
+    justify-content: center;
+  }
+
+  .social-link {
+    width: 40px;
+    height: 40px;
+    background: rgba(240, 185, 11, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .social-link:hover {
+    background: rgba(240, 185, 11, 0.2);
+    color: var(--accent-primary);
+    transform: translateY(-2px);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 2.5rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .header-content {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .nav-links {
+      gap: 12px;
+    }
+
+    .hero-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .steps-container {
+      flex-direction: column;
+    }
+
+    .demo-container {
+      padding: 30px 20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-title {
+      font-size: 2rem;
+    }
+
+    .section-title {
+      font-size: 1.75rem;
+    }
+
+    .feature-card {
+      padding: 30px 20px;
+    }
+
+    .main-header {
+      padding: 12px 16px;
+    }
+  }
+</style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="main-header">
+    <div class="header-content">
+      <div class="logo-section">
+        <a href="#" class="logo">
+          <div class="logo-icon">CIB</div>
+          <div class="logo-text">CHART IN BIO</div>
+        </a>
+      </div>
+      
+      <nav class="nav-links">
+        <a href="#features" class="nav-link">Recursos</a>
+        <a href="#how-it-works" class="nav-link">Como Funciona</a>
+        <a href="#demo" class="nav-link">Demonstração</a>
+        <a href="#" class="nav-link">Documentação</a>
+      </nav>
+      
+      <a href="#create-profile" class="cta-button">
+        <i class="bi bi-plus-circle"></i>
+        Criar Perfil
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <h1 class="hero-title">Sistema de Links Descentralizado na BSC</h1>
+    <p class="hero-subtitle">
+      Crie seu perfil de links personalizado totalmente na blockchain da Binance Smart Chain. 
+      Sem intermediários, sem censura, totalmente verificável.
+    </p>
+    <div class="hero-buttons">
+      <a href="#create-profile" class="cta-button">
+        <i class="bi bi-rocket-takeoff"></i>
+        Começar Agora
+      </a>
+      <a href="#demo" class="secondary-button">
+        <i class="bi bi-play-circle"></i>
+        Ver Demonstração
+      </a>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="features-section">
+    <h2 class="section-title">Recursos Exclusivos</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="bi bi-shield-lock"></i>
+        </div>
+        <h3 class="feature-title">Totalmente Descentralizado</h3>
+        <p class="feature-description">
+          Seu perfil de links é armazenado diretamente na blockchain da BSC. 
+          Sem servidores centralizados, sem risco de censura.
+        </p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="bi bi-graph-up"></i>
+        </div>
+        <h3 class="feature-title">Gráficos de Tokens</h3>
+        <p class="feature-description">
+          Integração nativa com gráficos de preços de tokens. 
+          Mostre o desempenho do seu projeto diretamente no perfil.
+        </p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="bi bi-patch-check"></i>
+        </div>
+        <h3 class="feature-title">Verificação On-Chain</h3>
+        <p class="feature-description">
+          Sistema de verificação baseado em posse de tokens. 
+          Badges verificáveis que comprovam sua identidade ou participação.
+        </p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="bi bi-wallet2"></i>
+        </div>
+        <h3 class="feature-title">Integração com Carteiras</h3>
+        <p class="feature-description">
+          Conecte-se facilmente com MetaMask, Trust Wallet e outras 
+          carteiras compatíveis com a Binance Smart Chain.
+        </p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="bi bi-share"></i>
+        </div>
+        <h3 class="feature-title">Compartilhamento Fácil</h3>
+        <p class="feature-description">
+          Compartilhe seu perfil em todas as redes sociais com 
+          um único link personalizado e meta tags otimizadas.
+        </p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="bi bi-code-slash"></i>
+        </div>
+        <h3 class="feature-title">API Aberta</h3>
+        <p class="feature-description">
+          Desenvolva aplicações sobre nossa plataforma com nossa 
+          API aberta e documentação completa.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section id="how-it-works" class="how-it-works">
+    <h2 class="section-title">Como Funciona</h2>
+    <div class="steps-container">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3 class="step-title">Conecte sua Carteira</h3>
+        <p class="step-description">
+          Conecte sua carteira Binance Smart Chain como MetaMask ou Trust Wallet 
+          para acessar a plataforma.
+        </p>
+      </div>
+      
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3 class="step-title">Crie seu Perfil</h3>
+        <p class="step-description">
+          Adicione sua foto, nome, descrição e todos os links que deseja 
+          compartilhar com sua audiência.
+        </p>
+      </div>
+      
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3 class="step-title">Personalize</h3>
+        <p class="step-description">
+          Adicione gráficos de tokens, badges de verificação e customize 
+          a aparência do seu perfil.
+        </p>
+      </div>
+      
+      <div class="step">
+        <div class="step-number">4</div>
+        <h3 class="step-title">Compartilhe</h3>
+        <p class="step-description">
+          Compartilhe seu link personalizado em todas as suas redes sociais 
+          e comece a direcionar tráfego.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Demo Section -->
+  <section id="demo" class="demo-section">
+    <h2 class="section-title">Veja uma Demonstração</h2>
+    <div class="demo-container">
+      <div class="demo-profile">
+        <div class="demo-avatar">
+          <i class="bi bi-person-circle" style="font-size: 48px;"></i>
+        </div>
+        <h3 class="demo-name">John Crypto</h3>
+        <p class="demo-description">Crypto Enthusiast & DeFi Investor</p>
+        <div class="network-badge" style="display: inline-flex; align-items: center; gap: 6px; background: rgba(14, 203, 129, 0.1); color: var(--success); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-top: 8px;">
+          <div class="network-indicator" style="width: 6px; height: 6px; border-radius: 50%; background: var(--success);"></div>
+          Network address
+        </div>
+      </div>
+      
+      <div class="demo-links">
+        <a href="#" class="demo-link">
+          <i class="bi bi-twitter" style="margin-right: 8px;"></i>
+          Twitter
+        </a>
+        <a href="#" class="demo-link">
+          <i class="bi bi-telegram" style="margin-right: 8px;"></i>
+          Telegram
+        </a>
+        <a href="#" class="demo-link">
+          <i class="bi bi-globe" style="margin-right: 8px;"></i>
+          Website
+        </a>
+        <a href="#" class="demo-link">
+          <i class="bi bi-github" style="margin-right: 8px;"></i>
+          GitHub
+        </a>
+      </div>
+      
+      <div class="footer" style="margin-top: 30px; padding: 20px 0 0; border-top: 1px solid var(--border-light);">
+        <div style="font-size: 13px; color: var(--text-muted);">Chart in Bio — Public Profile</div>
+        <div class="powered-by" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 8px;">
+          Powered by
+          <span class="bsc-badge" style="background: rgba(240, 185, 11, 0.1); color: var(--accent-primary); padding: 4px 8px; border-radius: var(--radius-sm); font-size: 11px; font-weight: 600;">CIB</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section id="create-profile" class="cta-section">
+    <h2 class="cta-title">Pronto para Criar seu Perfil?</h2>
+    <p class="cta-subtitle">
+      Junte-se à revolução descentralizada e crie seu perfil de links 
+      na blockchain da Binance Smart Chain hoje mesmo.
+    </p>
+    <a href="#" class="cta-button" style="font-size: 1.125rem; padding: 16px 32px;">
+      <i class="bi bi-plus-circle"></i>
+      Criar Meu Perfil Agora
+    </a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>Chart in Bio</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 20px;">
+          Sistema de links descentralizado na Binance Smart Chain. 
+          Totalmente on-chain, verificável e sem censura.
+        </p>
+        <div class="social-links">
+          <a href="#" class="social-link">
+            <i class="bi bi-twitter"></i>
+          </a>
+          <a href="#" class="social-link">
+            <i class="bi bi-telegram"></i>
+          </a>
+          <a href="#" class="social-link">
+            <i class="bi bi-github"></i>
+          </a>
+          <a href="#" class="social-link">
+            <i class="bi bi-discord"></i>
+          </a>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Recursos</h3>
+        <ul class="footer-links">
+          <li><a href="#">Documentação</a></li>
+          <li><a href="#">API</a></li>
+          <li><a href="#">Exemplos</a></li>
+          <li><a href="#">Tutoriais</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Suporte</h3>
+        <ul class="footer-links">
+          <li><a href="#">Central de Ajuda</a></li>
+          <li><a href="#">Contato</a></li>
+          <li><a href="#">Status</a></li>
+          <li><a href="#">Reportar Bug</a></li>
+          <li><a href="#">Sugerir Recurso</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Legal</h3>
+        <ul class="footer-links">
+          <li><a href="#">Termos de Uso</a></li>
+          <li><a href="#">Política de Privacidade</a></li>
+          <li><a href="#">Cookies</a></li>
+          <li><a href="#">Licenças</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2024 Chart in Bio. Todos os direitos reservados.</p>
+      <p>Construído na Binance Smart Chain 🚀</p>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Add active class to nav links based on scroll position
+    window.addEventListener('scroll', () => {
+      const sections = document.querySelectorAll('section');
+      const navLinks = document.querySelectorAll('.nav-link');
+      
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (scrollY >= sectionTop - 100) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Animation on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe elements for animation
+    document.querySelectorAll('.feature-card, .step, .demo-container').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
